@@ -28,7 +28,7 @@
 | Cómo | Pasos |
 |---|---|
 | **Melty** (un clic) | Pulsa Play en [melty.gg/m/steve-in-the-backrooms](https://melty.gg/m/steve-in-the-backrooms). La primera vez se abre Prism Launcher para que inicies sesión con tu cuenta de Microsoft; después descarga Minecraft y Java solo. |
-| **A mano** | Instalación de Minecraft **1.21.11** con **Fabric Loader 0.19.5** o posterior. En `mods`: `backroomscraft-<versión>.jar` de [Releases](../../releases) y [Fabric API](https://modrinth.com/mod/fabric-api) para 1.21.11. |
+| **A mano** | Instalación de Minecraft **1.21.11** con **Fabric Loader 0.19** o posterior. En `mods`: `backroomscraft-<versión>.jar` de [Releases](../../releases) y [Fabric API](https://modrinth.com/mod/fabric-api) para 1.21.11. Pasos para cada launcher [más abajo](#en-tu-launcher). |
 | **Desde el código** | `cd mod` y `gradlew build`. Ver [docs/development.md](docs/development.md). |
 
 ### Qué necesitas
@@ -36,6 +36,19 @@
 - **Minecraft: Java Edition** (una cuenta de Microsoft que lo tenga).
 - **Escape the Backrooms instalado en Steam.** Sin él, el juego te avisa en pantalla y no hay nivel.
 - Windows.
+
+### En tu launcher
+
+El mod es un solo archivo, [`backroomscraft-0.1.0.jar`](../../releases/latest), y sirve en cualquier launcher que tenga Fabric. Necesita Minecraft **1.21.11**, **Fabric Loader 0.19 o posterior** y el mod **Fabric API**.
+
+| Launcher | Pasos |
+|---|---|
+| **CurseForge** | *Create Custom Profile* con Minecraft 1.21.11 y Fabric. En el perfil, *Add More Content* e instala **Fabric API**. Después, los tres puntos del perfil, *Open Folder*, y copia el `.jar` en la carpeta `mods`. |
+| **Modrinth App** | Crea una instancia con Fabric y 1.21.11. Instala **Fabric API** desde el buscador y arrastra el `.jar` a la lista de mods de la instancia. |
+| **Prism Launcher / MultiMC** | Instancia nueva de 1.21.11, *Editar*, *Versión*, *Instalar Fabric*. En *Mods*, descarga **Fabric API** y pulsa *Añadir archivo* para el `.jar`. |
+| **Launcher oficial** | Instala Fabric con el [instalador de Fabric](https://fabricmc.net/use/installer/) para 1.21.11. Copia el `.jar` y el de [Fabric API](https://modrinth.com/mod/fabric-api) en `%APPDATA%\.minecraft\mods`. |
+
+El mod todavía no está publicado en CurseForge ni en Modrinth, así que no sale en el buscador de esos launchers: el `.jar` se añade a mano como se indica arriba.
 
 ## Pruébalo
 
@@ -117,7 +130,7 @@ Escape the Backrooms es de Fancy Games y Minecraft es de Mojang/Microsoft. Proye
 
 **Minecraft inside the real Level 0 of Escape the Backrooms.** The whole map with its own geometry, textures, lamps and sounds, the Bacteria with its model and animations, the flashlight and the almond water are read from your own copy of the game while Minecraft runs. Nothing of the game ships with the mod, and there are no blocks standing in for the level. Steve, the HUD, health, hunger, the inventory, combat and placing blocks are Minecraft's.
 
-- **Install:** press Play on [Melty](https://melty.gg/m/steve-in-the-backrooms), or put the jar from [Releases](../../releases) and Fabric API into the `mods` folder of a Minecraft 1.21.11 + Fabric Loader install.
+- **Install:** press Play on [Melty](https://melty.gg/m/steve-in-the-backrooms), or put the jar from [Releases](../../releases) and Fabric API into the `mods` folder of a Minecraft 1.21.11 + Fabric Loader install. Any launcher with Fabric works (CurseForge, Modrinth App, Prism Launcher, the official one): make a 1.21.11 Fabric profile, add Fabric API, drop the jar in its `mods` folder. The mod is not listed on CurseForge or Modrinth yet.
 - **You need:** Minecraft: Java Edition, Escape the Backrooms installed on Steam, Windows.
 - **Play:** create a single-player Survival world. Right click with the flashlight or the almond water. Find the level's exit vent before the Bacteria finds you.
 - **Limits (0.1.0):** single player, Level 0 only; the lighting and the Bacteria's behaviour are the mod's own; the level's puzzles and see-through materials are not there.
