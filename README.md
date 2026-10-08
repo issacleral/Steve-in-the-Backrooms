@@ -29,12 +29,12 @@ Arrancas Minecraft y apareces en uno de los puntos de inicio reales del Level 0.
 
 ## Cómo se instala
 
-**La forma fácil: Melty.** Pulsa Play. La primera vez se abre Prism Launcher para que inicies sesión con tu cuenta de Microsoft; después descarga Minecraft y Java solo y arranca el juego.
+**La forma fácil: [Melty](https://melty.gg/m/steve-in-the-backrooms).** Pulsa Play. La primera vez se abre Prism Launcher para que inicies sesión con tu cuenta de Microsoft; después descarga Minecraft y Java solo y arranca el juego.
 
 **A mano**, en tu propio launcher:
 
 1. Crea una instalación de Minecraft **1.21.11** con **Fabric Loader 0.19.5** o posterior.
-2. Pon en la carpeta `mods` el archivo `backroomscraft-<versión>.jar` (en [Releases](../../releases)) y [Fabric API](https://modrinth.com/mod/fabric-api) para 1.21.11.
+2. Compila el mod (`cd mod` y `gradlew build`; el archivo queda en `mod/build/libs/backroomscraft-<versión>.jar`) y ponlo en la carpeta `mods` junto con [Fabric API](https://modrinth.com/mod/fabric-api) para 1.21.11.
 3. Arranca el juego.
 
 ## Cómo se juega
@@ -88,7 +88,7 @@ Steve, the HUD, health, hunger, the inventory, combat and placing blocks are Min
 
 **You need** Minecraft: Java Edition, Escape the Backrooms installed on Steam, and Windows.
 
-**Install:** press Play on Melty, or put the jar from [Releases](../../releases) and Fabric API into the `mods` folder of a Minecraft 1.21.11 + Fabric Loader install. Create a single-player Survival world.
+**Install:** press Play on [Melty](https://melty.gg/m/steve-in-the-backrooms), or build the jar (`cd mod`, `gradlew build`) and put it with Fabric API into the `mods` folder of a Minecraft 1.21.11 + Fabric Loader install. Create a single-player Survival world.
 
 **Limits (0.1.0):** single player, Level 0 only; the lighting is the mod's own, baked from the map's lamps; the Bacteria's behaviour is the mod's; the level's puzzles and see-through materials are not there.
 

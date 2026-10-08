@@ -115,6 +115,16 @@ Coordinates: Minecraft (x, y, z) = Unreal (x, z, y) / 100, plus 64 on y. 1 block
   (cover: the Bacteria in first person). Not published: waiting for the owner's go-ahead, then `publish`, and it goes
   live once they press Play on its page in the Melty app.
 
+## GitHub and the demo clip (2026-10-08)
+- Repository: https://github.com/issacleral/Steve-in-the-Backrooms (public, branch `main`), created through the owner's
+  signed-in Chrome; pushes go through Git Credential Manager. `melty.json` is at its root.
+- `./gradlew runClient -Pautotest=demo -Pstart=0` plays a captioned tour and saves one frame per tick as
+  `mod/run/screenshots/demo_NNNN.png`; ffmpeg at 20 fps makes `media/steve_in_the_backrooms_demo.mp4` (28 s, no sound:
+  frames only). The clip is on the Melty listing.
+- Release 0.1.0 was resubmitted after the demo code so the jar on Melty matches the source, and `publish` was called
+  again: status awaiting-play until the owner presses Play on its page in the Melty app.
+- No GitHub release with the jar yet: the README tells people to use Melty or build it.
+
 ## Rules
 - Never commit or ship Escape the Backrooms files; extracted data stays in the temp folder or the instance's cache.
 - Sheets in design/sheets are the source of truth: change the sheet, run `python design/sheets.py gen`, then the code.
