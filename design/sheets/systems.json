@@ -1,0 +1,323 @@
+{
+  "_sheet": "Systems. One row per piece of the mod and what it depends on.",
+  "_kind": "doc",
+  "_columns": {
+    "id": "key",
+    "file": "file; mod source file",
+    "what": "str; what it does",
+    "uses": "refs:systems; what it depends on"
+  },
+  "rows": [
+    {
+      "id": "steam_locator",
+      "file": "src/main/java/gg/backroomscraft/etb/SteamLocator.java",
+      "what": "Finds the Steam copy of Escape the Backrooms (app 1943950) from the registry and the Steam library list.",
+      "uses": [],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "pak_archive",
+      "file": "src/main/java/gg/backroomscraft/etb/PakArchive.java",
+      "what": "Opens the pak and reads one file at a time, inflating Zlib blocks.",
+      "uses": [],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "upackage",
+      "file": "src/main/java/gg/backroomscraft/etb/UPackage.java",
+      "what": "Names, imports, exports and tagged properties of a cooked UE 4.27 package.",
+      "uses": [
+        "pak_archive"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "mesh_reader",
+      "file": "src/main/java/gg/backroomscraft/etb/StaticMeshReader.java",
+      "what": "Reads LOD0 of a cooked StaticMesh: positions, normals, UVs, indices, sections and their materials.",
+      "uses": [
+        "upackage"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "texture_reader",
+      "file": "src/main/java/gg/backroomscraft/etb/TextureReader.java",
+      "what": "Reads a Texture2D mip chain (DXT1, DXT5, BC4, BC5, BGRA8, G8) into images.",
+      "uses": [
+        "upackage"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "material_reader",
+      "file": "src/main/java/gg/backroomscraft/etb/MaterialReader.java",
+      "what": "Follows a material instance to its base colour texture, tint, tiling and emissive strength.",
+      "uses": [
+        "upackage"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "level_reader",
+      "file": "src/main/java/gg/backroomscraft/etb/LevelReader.java",
+      "what": "Rebuilds a map: every mesh instance with its world matrix, lights, player starts and gameplay actors.",
+      "uses": [
+        "upackage"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "sound_reader",
+      "file": "src/main/java/gg/backroomscraft/etb/SoundReader.java",
+      "what": "Takes the Ogg Vorbis data out of a SoundWave.",
+      "uses": [
+        "upackage"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "level_bake",
+      "file": "src/main/java/gg/backroomscraft/bake/LevelBake.java",
+      "what": "Turns a map into what the game needs: merged render meshes with baked light, collision voxels, spawn points.",
+      "uses": [
+        "level_reader",
+        "mesh_reader",
+        "material_reader",
+        "collision_bake",
+        "light_bake"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "collision_bake",
+      "file": "src/main/java/gg/backroomscraft/bake/CollisionBake.java",
+      "what": "Voxelises the map's triangles at 12.5 cm into per-block bit patterns.",
+      "uses": [],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "light_bake",
+      "file": "src/main/java/gg/backroomscraft/bake/LightBake.java",
+      "what": "Bakes the map's own lights into vertex colours, with shadows traced through the collision voxels.",
+      "uses": [
+        "collision_bake"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "baked_level",
+      "file": "src/main/java/gg/backroomscraft/bake/BakedLevel.java",
+      "what": "The baked map and its cache file in the instance folder.",
+      "uses": [],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "main",
+      "file": "src/main/java/gg/backroomscraft/BackroomsCraft.java",
+      "what": "Mod entry point: starts the library and registers the block, the generator and the run rules.",
+      "uses": [
+        "library",
+        "collision_block",
+        "chunk_generator",
+        "run"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "library",
+      "file": "src/main/java/gg/backroomscraft/EtbLibrary.java",
+      "what": "Opens Escape the Backrooms once at start-up and bakes or loads the level on a background thread.",
+      "uses": [
+        "steam_locator",
+        "pak_archive",
+        "level_bake",
+        "baked_level"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "collision_block",
+      "file": "src/main/java/gg/backroomscraft/world/CollisionBlock.java",
+      "what": "Invisible block whose shape is the map's voxels at that position, so Minecraft physics and mobs meet the real geometry.",
+      "uses": [
+        "library"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "chunk_generator",
+      "file": "src/main/java/gg/backroomscraft/world/LevelChunkGenerator.java",
+      "what": "Fills the level dimension with collision blocks and nothing else.",
+      "uses": [
+        "collision_block"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "run",
+      "file": "src/main/java/gg/backroomscraft/game/Run.java",
+      "what": "Puts the player in the level, gives the kit, places the map's pickups and the entity, ends the run at the exit.",
+      "uses": [
+        "library",
+        "items",
+        "sanity"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "sanity",
+      "file": "src/main/java/gg/backroomscraft/game/Sanity.java",
+      "what": "The sanity number: drains in the dark and near the entity, restored by almond water, synced to the client.",
+      "uses": [
+        "library"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "items",
+      "file": "src/main/java/gg/backroomscraft/ModItems.java",
+      "what": "Registers the flashlight and almond water from the items sheet.",
+      "uses": [],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "client_level",
+      "file": "src/client/java/gg/backroomscraft/client/LevelDraw.java",
+      "what": "Uploads the baked map to the GPU and draws it every frame with its own pipeline.",
+      "uses": [
+        "library",
+        "client_textures"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "client_textures",
+      "file": "src/client/java/gg/backroomscraft/client/EtbTextures.java",
+      "what": "Loads Escape the Backrooms textures with their mip chains as GPU textures.",
+      "uses": [
+        "texture_reader"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "autotest",
+      "file": "src/client/java/gg/backroomscraft/client/Autotest.java",
+      "what": "Scripted in-game check, only with -Dbackroomscraft.autotest: makes a world, walks the level, takes screenshots.",
+      "uses": [
+        "client_level",
+        "run"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "client_main",
+      "file": "src/client/java/gg/backroomscraft/client/BackroomsCraftClient.java",
+      "what": "Client entry point: starts texture loading, the level drawing and the autotest.",
+      "uses": [
+        "client_level",
+        "client_textures",
+        "autotest"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "skeletal_reader",
+      "file": "src/main/java/gg/backroomscraft/etb/SkeletalMeshReader.java",
+      "what": "Reads a cooked SkeletalMesh: vertices, skin weights, bones and rest pose.",
+      "uses": [
+        "upackage"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "anim_reader",
+      "file": "src/main/java/gg/backroomscraft/etb/AnimReader.java",
+      "what": "Reads AnimSequences compressed with the per-track codec, and a Skeleton's bone names.",
+      "uses": [
+        "upackage"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "skinning",
+      "file": "src/main/java/gg/backroomscraft/etb/Skinning.java",
+      "what": "Poses a skeletal mesh with an animation and moves its vertices.",
+      "uses": [
+        "skeletal_reader",
+        "anim_reader"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "entity",
+      "file": "src/main/java/gg/backroomscraft/entity/BacteriaEntity.java",
+      "what": "The entity as a Minecraft monster: numbers from the entities sheet, chases and hits the player.",
+      "uses": [
+        "collision_block"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "creature_assets",
+      "file": "src/client/java/gg/backroomscraft/client/CreatureAssets.java",
+      "what": "Loads the entity's mesh, animations and texture from the game files on a background thread.",
+      "uses": [
+        "skinning",
+        "client_textures"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "creature_draw",
+      "file": "src/client/java/gg/backroomscraft/client/CreatureDraw.java",
+      "what": "Skins and draws every entity in the level's own render pass.",
+      "uses": [
+        "creature_assets",
+        "client_level"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "item_renderer",
+      "file": "src/client/java/gg/backroomscraft/client/EtbItemRenderer.java",
+      "what": "Draws the carried items with their Escape the Backrooms meshes, wherever Minecraft draws an item.",
+      "uses": [
+        "mesh_reader",
+        "material_reader",
+        "texture_reader"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "client_sounds",
+      "file": "src/client/java/gg/backroomscraft/client/EtbSounds.java",
+      "what": "Plays Escape the Backrooms' own Ogg sounds through Minecraft's sound engine.",
+      "uses": [
+        "sound_reader"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "client_game",
+      "file": "src/client/java/gg/backroomscraft/client/ClientGame.java",
+      "what": "Client side of a run: ambience, footsteps, chase sound, heartbeat, the flashlight beam.",
+      "uses": [
+        "client_sounds",
+        "client_level",
+        "sanity"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "hud",
+      "file": "src/client/java/gg/backroomscraft/client/SanityHud.java",
+      "what": "The sanity bar, the dark edges at low sanity, and the loading and missing-game notices.",
+      "uses": [
+        "sanity",
+        "library"
+      ],
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    }
+  ]
+}

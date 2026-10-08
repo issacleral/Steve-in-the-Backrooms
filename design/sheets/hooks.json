@@ -1,0 +1,215 @@
+{
+  "_sheet": "Hooks into Minecraft. One row per place the mod touches the game.",
+  "_kind": "doc",
+  "_columns": {
+    "id": "key",
+    "side": "str; common | client",
+    "kind": "str; registry | network | event | mixin | api | data",
+    "target": "class; as a path under the decompiled Minecraft or Fabric API sources",
+    "member": "str; method or field that must exist in target",
+    "file": "file; mod source file that implements it; must contain the text 'hook: <id>'",
+    "purpose": "str; what it is for"
+  },
+  "rows": [
+    {
+      "id": "collision_block",
+      "side": "common",
+      "kind": "registry",
+      "target": "net/minecraft/world/level/block/Blocks",
+      "member": "register",
+      "file": "src/main/java/gg/backroomscraft/world/CollisionBlock.java",
+      "purpose": "Registers the invisible collision block.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "chunk_generator",
+      "side": "common",
+      "kind": "registry",
+      "target": "net/minecraft/core/registries/BuiltInRegistries",
+      "member": "CHUNK_GENERATOR",
+      "file": "src/main/java/gg/backroomscraft/world/LevelChunkGenerator.java",
+      "purpose": "Registers the generator the level dimension's JSON names.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "player_join",
+      "side": "common",
+      "kind": "event",
+      "target": "net/fabricmc/fabric/api/networking/v1/ServerPlayConnectionEvents",
+      "member": "JOIN",
+      "file": "src/main/java/gg/backroomscraft/game/Run.java",
+      "purpose": "A player entering the world is put in Level 0.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "player_respawn",
+      "side": "common",
+      "kind": "event",
+      "target": "net/fabricmc/fabric/api/entity/event/v1/ServerPlayerEvents",
+      "member": "AFTER_RESPAWN",
+      "file": "src/main/java/gg/backroomscraft/game/Run.java",
+      "purpose": "A player who died starts the run again in Level 0.",
+      "verified": "pending: the autotest ends when the player dies, before respawning"
+    },
+    {
+      "id": "server_tick",
+      "side": "common",
+      "kind": "event",
+      "target": "net/fabricmc/fabric/api/event/lifecycle/v1/ServerTickEvents",
+      "member": "END_SERVER_TICK",
+      "file": "src/main/java/gg/backroomscraft/game/Run.java",
+      "purpose": "Checks the exit, the fall limit and sanity every tick.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "level_draw",
+      "side": "client",
+      "kind": "event",
+      "target": "net/fabricmc/fabric/api/client/rendering/v1/world/WorldRenderEvents",
+      "member": "START_MAIN",
+      "file": "src/client/java/gg/backroomscraft/client/LevelDraw.java",
+      "purpose": "Draws the map into the main target before Minecraft's own terrain.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "level_pipeline",
+      "side": "client",
+      "kind": "api",
+      "target": "com/mojang/blaze3d/pipeline/RenderPipeline",
+      "member": "withVertexShader",
+      "file": "src/client/java/gg/backroomscraft/client/LevelDraw.java",
+      "purpose": "The map's own shaders: baked light, flashlight beam, fog.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "block_outline",
+      "side": "client",
+      "kind": "event",
+      "target": "net/fabricmc/fabric/api/client/rendering/v1/world/WorldRenderEvents",
+      "member": "BEFORE_BLOCK_OUTLINE",
+      "file": "src/client/java/gg/backroomscraft/client/LevelDraw.java",
+      "purpose": "No selection box around the invisible collision blocks.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "gpu_texture",
+      "side": "client",
+      "kind": "api",
+      "target": "com/mojang/blaze3d/systems/GpuDevice",
+      "member": "createTexture",
+      "file": "src/client/java/gg/backroomscraft/client/EtbTextures.java",
+      "purpose": "Escape the Backrooms textures with all their mips, sampled with repeat.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "client_tick",
+      "side": "client",
+      "kind": "event",
+      "target": "net/fabricmc/fabric/api/client/event/lifecycle/v1/ClientTickEvents",
+      "member": "END_CLIENT_TICK",
+      "file": "src/client/java/gg/backroomscraft/client/Autotest.java",
+      "purpose": "Drives the scripted in-game check.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "items",
+      "side": "common",
+      "kind": "registry",
+      "target": "net/minecraft/world/item/Items",
+      "member": "registerItem",
+      "file": "src/main/java/gg/backroomscraft/ModItems.java",
+      "purpose": "Registers the flashlight and almond water from the items sheet.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "lit_component",
+      "side": "common",
+      "kind": "registry",
+      "target": "net/minecraft/core/component/DataComponentType",
+      "member": "builder",
+      "file": "src/main/java/gg/backroomscraft/ModItems.java",
+      "purpose": "Whether a flashlight is on, stored on the item and synced to the client.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "sanity_attachment",
+      "side": "common",
+      "kind": "api",
+      "target": "net/fabricmc/fabric/api/attachment/v1/AttachmentRegistry",
+      "member": "create",
+      "file": "src/main/java/gg/backroomscraft/game/Sanity.java",
+      "purpose": "The player's sanity: saved with the player and synced to their client.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "entity_type",
+      "side": "common",
+      "kind": "registry",
+      "target": "net/minecraft/world/entity/EntityType",
+      "member": "Builder",
+      "file": "src/main/java/gg/backroomscraft/entity/BacteriaEntity.java",
+      "purpose": "Registers the entity.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "entity_attributes",
+      "side": "common",
+      "kind": "api",
+      "target": "net/fabricmc/fabric/api/object/builder/v1/entity/FabricDefaultAttributeRegistry",
+      "member": "register",
+      "file": "src/main/java/gg/backroomscraft/entity/BacteriaEntity.java",
+      "purpose": "Health, damage, speed and sight from the entities sheet.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "entity_renderer",
+      "side": "client",
+      "kind": "api",
+      "target": "net/fabricmc/fabric/api/client/rendering/v1/EntityRendererRegistry",
+      "member": "register",
+      "file": "src/client/java/gg/backroomscraft/client/CreatureDraw.java",
+      "purpose": "Minecraft's own renderer draws nothing for the entity; CreatureDraw draws it.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "special_model",
+      "side": "client",
+      "kind": "registry",
+      "target": "net/minecraft/client/renderer/special/SpecialModelRenderers",
+      "member": "ID_MAPPER",
+      "file": "src/client/java/gg/backroomscraft/client/EtbItemRenderer.java",
+      "purpose": "The item model type backroomscraft:etb_mesh the generated item JSON names.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "hud",
+      "side": "client",
+      "kind": "api",
+      "target": "net/fabricmc/fabric/api/client/rendering/v1/hud/HudElementRegistry",
+      "member": "addLast",
+      "file": "src/client/java/gg/backroomscraft/client/SanityHud.java",
+      "purpose": "Adds the sanity bar and notices to the HUD.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "game_tick",
+      "side": "client",
+      "kind": "event",
+      "target": "net/fabricmc/fabric/api/client/event/lifecycle/v1/ClientTickEvents",
+      "member": "END_CLIENT_TICK",
+      "file": "src/client/java/gg/backroomscraft/client/ClientGame.java",
+      "purpose": "Starts and stops sounds and tracks the flashlight every tick.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "sound_play",
+      "side": "client",
+      "kind": "api",
+      "target": "net/minecraft/client/sounds/SoundManager",
+      "member": "play",
+      "file": "src/client/java/gg/backroomscraft/client/EtbSounds.java",
+      "purpose": "Plays an Ogg read from Escape the Backrooms as a streamed sound.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    }
+  ]
+}

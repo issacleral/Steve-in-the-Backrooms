@@ -1,0 +1,22 @@
+{
+	"schemaVersion": 1,
+	"id": "backroomscraft",
+	"version": "${version}",
+	"name": "Steve in the Backrooms",
+	"description": "Escape the Backrooms' real Level 0, played as Minecraft's Steve. The map, textures, sounds and entity are read from your own copy of Escape the Backrooms.",
+	"authors": ["issac_leral"],
+	"contact": {},
+	"license": "MIT",
+	"environment": "*",
+	"accessWidener": "backroomscraft.accesswidener",
+	"entrypoints": {
+		"main": ["gg.backroomscraft.BackroomsCraft"],
+		"client": ["gg.backroomscraft.client.BackroomsCraftClient"]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.0",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

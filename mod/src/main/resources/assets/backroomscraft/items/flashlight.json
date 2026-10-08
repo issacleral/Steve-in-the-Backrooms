@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "backroomscraft:item/etb_base",
+    "model": {
+      "type": "backroomscraft:etb_mesh",
+      "item": "flashlight"
+    }
+  }
+}

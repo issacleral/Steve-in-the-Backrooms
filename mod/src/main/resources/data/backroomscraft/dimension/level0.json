@@ -1,0 +1,10 @@
+{
+  "type": "backroomscraft:level0",
+  "generator": {
+    "type": "backroomscraft:level",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "minecraft:the_void"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "_sheet": "Items. One row per Escape the Backrooms object the player can carry. The model is the game's mesh.",
+  "_record": "Item",
+  "_columns": {
+    "id": "key; registry path under backroomscraft:",
+    "name": "str; English name",
+    "kind": "str; flashlight | drink",
+    "mesh": "etb; static mesh",
+    "stack": "int; max stack size",
+    "pickup_class": "str; class of the map actors that become this item lying in the level",
+    "hand_yaw": "float; degrees the mesh is turned in the hand so it points the right way",
+    "hand_size": "float; length of its longest side when held, in blocks (the meshes are not all modelled at the same scale)"
+  },
+  "rows": [
+    {
+      "id": "flashlight",
+      "name": "Flashlight",
+      "kind": "flashlight",
+      "mesh": "/Game/FPS_Light_Pack/Meshes/Flashlight/SM_Flashlight",
+      "stack": 1,
+      "pickup_class": "BP_DroppedItem_Flashlight_C",
+      "verified": "in-game autotest 2026-10-08 (PASS): in the kit, drawn in the hand and the hotbar, switches the beam on. The copies lying in the map are reachable per the dump; not looked at in game",
+      "hand_yaw": -90.0,
+      "hand_size": 0.5
+    },
+    {
+      "id": "almond_water",
+      "name": "Almond Water",
+      "kind": "drink",
+      "mesh": "/Game/Items/AlmondWater/AWC_low",
+      "stack": 16,
+      "pickup_class": "BP_DroppedItem_AlmondWater_C",
+      "verified": "in-game autotest 2026-10-08 (PASS): in the kit, drawn in the hand and the hotbar, drunk, one fewer in the stack. The copies lying in the map are reachable per the dump; not looked at in game",
+      "hand_yaw": 0.0,
+      "hand_size": 0.32
+    }
+  ]
+}

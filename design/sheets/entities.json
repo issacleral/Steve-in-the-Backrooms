@@ -1,0 +1,53 @@
+{
+  "_sheet": "Entities. One row per Escape the Backrooms creature. Model, animations and sounds are the game's; the numbers are this mod's.",
+  "_record": "Creature",
+  "_columns": {
+    "id": "key; registry path under backroomscraft:",
+    "name": "str; English name",
+    "mesh": "etb; skeletal mesh",
+    "material": "etb; material the base colour texture is taken from",
+    "anim_idle": "etb; animation while it has no target",
+    "anim_run": "etb; animation while chasing",
+    "anim_attack": "etb; animation when it hits",
+    "sound_chase": "ref:sounds; loops while it chases the player",
+    "sound_attack": "ref:sounds; when it hits",
+    "health": "float; hit points (a zombie has 20)",
+    "damage": "float; per hit",
+    "speed": "float; movement speed attribute while chasing (zombie 0.23, a sprinting player outruns about 0.36)",
+    "follow_range": "float; blocks at which it notices the player",
+    "width": "float; hitbox width in blocks",
+    "height": "float; hitbox height in blocks",
+    "respawn_s": "float; seconds after dying before it is back at its start",
+    "mesh_scale": "float; size of the mesh, from the game's blueprint: mesh component scale x actor scale",
+    "mesh_yaw": "float; degrees the mesh is turned inside the actor, from the game's blueprint",
+    "attack_reach": "float; blocks from which it can hit",
+    "shade": "float; how much of the base colour texture shows as surface colour: low for a metal material, which in the game is dark with reflections",
+    "attack_cooldown_s": "float; seconds between two hits"
+  },
+  "rows": [
+    {
+      "id": "bacteria",
+      "name": "Bacteria",
+      "mesh": "/Game/Entity/Bacteria/creature_unwrap",
+      "material": "/Game/Entity/Bacteria/M_Bacteria",
+      "anim_idle": "/Game/Entity/Howler/Breathing_Idle__1__Anim",
+      "anim_run": "/Game/Entity/Howler/Zombie_Run_Anim",
+      "anim_attack": "/Game/Entity/Howler/Attack_Anim",
+      "sound_chase": "bacteria_chase",
+      "sound_attack": "bacteria_jumpscare",
+      "health": 60.0,
+      "damage": 7.0,
+      "speed": 0.33,
+      "follow_range": 28.0,
+      "width": 0.7,
+      "height": 2.9,
+      "respawn_s": 45.0,
+      "verified": "in-game autotest 2026-10-08 (PASS) from each of the four starts: drawn with its mesh and animations, chases, reaches and hits the player; moved onto the player's trail when idle. The attack and idle animations were looked at in screenshots only",
+      "mesh_scale": 0.33,
+      "mesh_yaw": -90.0,
+      "attack_reach": 2.2,
+      "shade": 0.2,
+      "attack_cooldown_s": 1.25
+    }
+  ]
+}

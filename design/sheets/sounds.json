@@ -1,0 +1,85 @@
+{
+  "_sheet": "Sounds. One row per sound the mod plays; every path is a SoundWave in Escape the Backrooms (Ogg Vorbis).",
+  "_record": "Sound",
+  "_columns": {
+    "id": "key",
+    "paths": "etbs; SoundWave objects, one is picked at random",
+    "volume": "float; 0..1",
+    "pitch_jitter": "float; random pitch change, 0 = none",
+    "loop": "bool; repeats until stopped",
+    "category": "str; Minecraft volume slider it follows: ambient | hostile | players"
+  },
+  "rows": [
+    {
+      "id": "level0_loop",
+      "paths": [
+        "/Game/Sounds/Level0/level0_loop"
+      ],
+      "volume": 0.75,
+      "pitch_jitter": 0.0,
+      "loop": true,
+      "verified": "in-game autotest 2026-10-08: started by the sound engine without error; not yet judged by ear",
+      "category": "ambient"
+    },
+    {
+      "id": "bacteria_chase",
+      "paths": [
+        "/Game/Sounds/Bacteria/chaseloop__1_"
+      ],
+      "volume": 0.9,
+      "pitch_jitter": 0.0,
+      "loop": true,
+      "verified": "in-game autotest 2026-10-08: started by the sound engine without error; not yet judged by ear",
+      "category": "hostile"
+    },
+    {
+      "id": "bacteria_chase_start",
+      "paths": [
+        "/Game/Sounds/Bacteria/ChaseLoop_Start"
+      ],
+      "volume": 1.0,
+      "pitch_jitter": 0.0,
+      "loop": false,
+      "verified": "in-game autotest 2026-10-08: started by the sound engine without error; not yet judged by ear",
+      "category": "hostile"
+    },
+    {
+      "id": "bacteria_jumpscare",
+      "paths": [
+        "/Game/Sounds/Jumpscares/BacteriaJumpscare"
+      ],
+      "volume": 1.0,
+      "pitch_jitter": 0.0,
+      "loop": false,
+      "verified": "in-game autotest 2026-10-08: started by the sound engine without error; not yet judged by ear",
+      "category": "hostile"
+    },
+    {
+      "id": "footstep_carpet",
+      "paths": [
+        "/Game/Sounds/Footsteps/Carpet/player_carpet_wlk1",
+        "/Game/Sounds/Footsteps/Carpet/player_carpet_wlk2",
+        "/Game/Sounds/Footsteps/Carpet/player_carpet_wlk3",
+        "/Game/Sounds/Footsteps/Carpet/player_carpet_wlk4",
+        "/Game/Sounds/Footsteps/Carpet/player_carpet_wlk5",
+        "/Game/Sounds/Footsteps/Carpet/player_carpet_wlk6"
+      ],
+      "volume": 0.55,
+      "pitch_jitter": 0.08,
+      "loop": false,
+      "verified": "in-game autotest 2026-10-08: started by the sound engine without error; not yet judged by ear",
+      "category": "players"
+    },
+    {
+      "id": "heartbeat",
+      "paths": [
+        "/Game/Sounds/Immersion/WAV_HEARTBEAT_05"
+      ],
+      "volume": 0.8,
+      "pitch_jitter": 0.0,
+      "loop": true,
+      "verified": "pending: decoded; plays below 30 sanity, which the autotest does not reach",
+      "category": "players"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "_sheet": "Text shown to the player (English). One row per language key.",
+  "_kind": "doc",
+  "_columns": {
+    "id": "key",
+    "key": "str; language key",
+    "en": "str; English text"
+  },
+  "rows": [
+    {
+      "id": "missing",
+      "key": "backroomscraft.missing",
+      "en": "Escape the Backrooms is not installed. Install it on Steam: this mod draws Level 0 from your own copy.",
+      "verified": "pending: needs a PC without Escape the Backrooms"
+    },
+    {
+      "id": "loading",
+      "key": "backroomscraft.loading",
+      "en": "Reading Level 0 from your copy of Escape the Backrooms...",
+      "verified": "pending: the level was ready before the world opened"
+    },
+    {
+      "id": "baking",
+      "key": "backroomscraft.baking",
+      "en": "Building Level 0 (first time only): %s",
+      "verified": "pending: the level was ready before the world opened"
+    },
+    {
+      "id": "failed",
+      "key": "backroomscraft.failed",
+      "en": "Could not read Escape the Backrooms' files: %s",
+      "verified": "pending: needs unreadable game files"
+    },
+    {
+      "id": "escaped_title",
+      "key": "backroomscraft.escaped.title",
+      "en": "You escaped Level 0",
+      "verified": "seen in the autotest screenshots 2026-10-08"
+    },
+    {
+      "id": "escaped_sub",
+      "key": "backroomscraft.escaped.subtitle",
+      "en": "Time %s. You noclip back in...",
+      "verified": "seen in the autotest screenshots 2026-10-08"
+    },
+    {
+      "id": "sanity",
+      "key": "backroomscraft.sanity",
+      "en": "Sanity",
+      "verified": "seen in the autotest screenshots 2026-10-08"
+    },
+    {
+      "id": "flashlight_on",
+      "key": "backroomscraft.flashlight.on",
+      "en": "Flashlight on",
+      "verified": "seen in the autotest screenshots 2026-10-08"
+    },
+    {
+      "id": "flashlight_off",
+      "key": "backroomscraft.flashlight.off",
+      "en": "Flashlight off",
+      "verified": "pending: the autotest only switches it on"
+    },
+    {
+      "id": "tooltip_flashlight",
+      "key": "backroomscraft.tooltip.flashlight",
+      "en": "Right click: on / off",
+      "verified": "pending: the inventory was not opened"
+    },
+    {
+      "id": "tooltip_almond",
+      "key": "backroomscraft.tooltip.almond_water",
+      "en": "Restores sanity",
+      "verified": "pending: the inventory was not opened"
+    },
+    {
+      "id": "subtitle",
+      "key": "subtitles.backroomscraft.etb",
+      "en": "Backrooms sound",
+      "verified": "pending: subtitles were off"
+    },
+    {
+      "id": "block_collision",
+      "key": "block.backroomscraft.collision",
+      "en": "Level 0",
+      "verified": "pending: never shown to players"
+    },
+    {
+      "id": "death_sanity",
+      "key": "death.attack.backroomscraft.insanity",
+      "en": "%1$s lost their mind in the Backrooms",
+      "verified": "pending: sanity never reached 0"
+    }
+  ]
+}

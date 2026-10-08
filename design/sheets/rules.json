@@ -1,0 +1,138 @@
+{
+  "_sheet": "Rules. One number per row: sanity, the exit and the run.",
+  "_kind": "constants",
+  "_columns": {
+    "id": "key; becomes Sheets.Rules.<ID>",
+    "value": "any; the number",
+    "unit": "str; what it is measured in",
+    "what": "str; what it controls"
+  },
+  "rows": [
+    {
+      "id": "sanity_max",
+      "value": 100.0,
+      "unit": "points",
+      "what": "Full sanity, as in Escape the Backrooms.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "sanity_drain_base",
+      "value": 0.07,
+      "unit": "points per second",
+      "what": "Lost all the time inside a level.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "sanity_drain_dark",
+      "value": 0.9,
+      "unit": "points per second",
+      "what": "Extra loss while standing in the dark with the flashlight off.",
+      "verified": "pending: needs a dark part of the map with the flashlight off"
+    },
+    {
+      "id": "sanity_drain_entity",
+      "value": 2.5,
+      "unit": "points per second",
+      "what": "Extra loss while the entity is chasing within sanity_entity_range.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "sanity_entity_range",
+      "value": 14.0,
+      "unit": "blocks",
+      "what": "How near the chasing entity must be to drain sanity.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "sanity_dark_light",
+      "value": 0.1,
+      "unit": "0..1 baked light",
+      "what": "Below this light the player counts as in the dark.",
+      "verified": "pending: needs a dark part of the map"
+    },
+    {
+      "id": "sanity_low",
+      "value": 30.0,
+      "unit": "points",
+      "what": "Below this the heartbeat plays and the screen darkens at the edges.",
+      "verified": "pending: sanity never fell below 30 in the autotest"
+    },
+    {
+      "id": "sanity_zero_damage",
+      "value": 1.0,
+      "unit": "hit points per second",
+      "what": "Damage taken while sanity is 0.",
+      "verified": "pending: sanity never reached 0 in the autotest"
+    },
+    {
+      "id": "almond_sanity",
+      "value": 35.0,
+      "unit": "points",
+      "what": "Sanity one almond water gives back.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "almond_heal",
+      "value": 4.0,
+      "unit": "hit points",
+      "what": "Health one almond water gives back.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "almond_food",
+      "value": 2.0,
+      "unit": "hunger points",
+      "what": "Hunger one almond water gives back.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "exit_radius",
+      "value": 2.5,
+      "unit": "blocks",
+      "what": "How near the exit actor counts as reaching it.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "footstep_stride",
+      "value": 1.7,
+      "unit": "blocks",
+      "what": "Distance walked between two footstep sounds.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "chase_sound_range",
+      "value": 40.0,
+      "unit": "blocks",
+      "what": "How near the chasing entity must be for its chase sound to play.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "entity_relocate_s",
+      "value": 20.0,
+      "unit": "seconds",
+      "what": "How often an entity with no target and no player near is moved onto the trail the player walked. In the map it starts in a closed room and the game lets it out with a scripted event; here this is what lets it out.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "entity_far",
+      "value": 30.0,
+      "unit": "blocks",
+      "what": "Further than this from every player, an idle entity may be moved.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "entity_relocate_min",
+      "value": 18.0,
+      "unit": "blocks",
+      "what": "Nearest to the player a moved entity is put.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    },
+    {
+      "id": "entity_relocate_max",
+      "value": 80.0,
+      "unit": "blocks",
+      "what": "Furthest from the player a moved entity is put; the nearest spot of the trail beyond the minimum is used.",
+      "verified": "in-game autotest 2026-10-08 (PASS)"
+    }
+  ]
+}

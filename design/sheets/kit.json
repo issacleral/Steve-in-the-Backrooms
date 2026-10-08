@@ -1,0 +1,47 @@
+{
+  "_sheet": "Starting kit. One row per stack the player has when a run begins.",
+  "_record": "Kit",
+  "_columns": {
+    "id": "key",
+    "item": "str; item id (minecraft:... or backroomscraft:...)",
+    "count": "int; how many",
+    "slot": "int; hotbar slot 0..8"
+  },
+  "rows": [
+    {
+      "id": "flashlight",
+      "item": "backroomscraft:flashlight",
+      "count": 1,
+      "slot": 0,
+      "verified": "in-game autotest 2026-10-08 (PASS): in its slot at the start and again after escaping"
+    },
+    {
+      "id": "sword",
+      "item": "minecraft:stone_sword",
+      "count": 1,
+      "slot": 1,
+      "verified": "in-game autotest 2026-10-08 (PASS): in its slot at the start and again after escaping"
+    },
+    {
+      "id": "food",
+      "item": "minecraft:bread",
+      "count": 6,
+      "slot": 2,
+      "verified": "in-game autotest 2026-10-08 (PASS): in its slot at the start and again after escaping"
+    },
+    {
+      "id": "blocks",
+      "item": "minecraft:oak_planks",
+      "count": 32,
+      "slot": 3,
+      "verified": "in-game autotest 2026-10-08 (PASS): in its slot at the start and again after escaping"
+    },
+    {
+      "id": "almond",
+      "item": "backroomscraft:almond_water",
+      "count": 2,
+      "slot": 4,
+      "verified": "in-game autotest 2026-10-08 (PASS): in its slot at the start and again after escaping"
+    }
+  ]
+}

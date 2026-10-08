@@ -1,0 +1,92 @@
+plugins {
+	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+	id 'maven-publish'
+}
+
+base {
+	archivesName = project.archives_base_name
+}
+
+loom {
+	splitEnvironmentSourceSets()
+	accessWidenerPath = file("src/main/resources/backroomscraft.accesswidener")
+
+	mods {
+		"backroomscraft" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+
+	runs {
+		client {
+			programArgs "--width", "1600", "--height", "900"
+			// ./gradlew runClient -Pautotest runs the scripted in-game check (see client/Autotest.java).
+			if (project.hasProperty("autotest")) {
+				vmArg "-Dbackroomscraft.autotest=${project.property('autotest') ?: 'true'}"
+			}
+			// -Pstart=N makes every run begin at the map's Nth start point instead of a random one.
+			if (project.hasProperty("start")) {
+				vmArg "-Dbackroomscraft.start=${project.property('start')}"
+			}
+		}
+	}
+}
+
+dependencies {
+	// To change the versions see the gradle.properties file
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings loom.officialMojangMappings()
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+// src/test holds the Dump developer check, which is run by hand against an installed Escape the Backrooms, not a unit test.
+test {
+	failOnNoDiscoveredTests = false
+}
+
+// ./gradlew dump -PdumpArgs="<output folder> [what]" reads the installed game outside Minecraft (see src/test/.../Dump.java).
+tasks.register('dump', JavaExec) {
+	classpath = sourceSets.test.runtimeClasspath
+	mainClass = 'gg.backroomscraft.Dump'
+	maxHeapSize = '4g'
+	args((project.findProperty('dumpArgs') ?: '').toString().split(' ').findAll { it })
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+}
+
+java {
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
+
+jar {
+	def projectName = project.name
+	inputs.property "projectName", projectName
+
+	from("LICENSE") {
+		rename { "${it}_$projectName"}
+	}
+}
+
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			from components.java
+		}
+	}
+}

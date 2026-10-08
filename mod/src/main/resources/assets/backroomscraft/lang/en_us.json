@@ -1,0 +1,19 @@
+{
+  "backroomscraft.missing": "Escape the Backrooms is not installed. Install it on Steam: this mod draws Level 0 from your own copy.",
+  "backroomscraft.loading": "Reading Level 0 from your copy of Escape the Backrooms...",
+  "backroomscraft.baking": "Building Level 0 (first time only): %s",
+  "backroomscraft.failed": "Could not read Escape the Backrooms' files: %s",
+  "backroomscraft.escaped.title": "You escaped Level 0",
+  "backroomscraft.escaped.subtitle": "Time %s. You noclip back in...",
+  "backroomscraft.sanity": "Sanity",
+  "backroomscraft.flashlight.on": "Flashlight on",
+  "backroomscraft.flashlight.off": "Flashlight off",
+  "backroomscraft.tooltip.flashlight": "Right click: on / off",
+  "backroomscraft.tooltip.almond_water": "Restores sanity",
+  "subtitles.backroomscraft.etb": "Backrooms sound",
+  "block.backroomscraft.collision": "Level 0",
+  "death.attack.backroomscraft.insanity": "%1$s lost their mind in the Backrooms",
+  "item.backroomscraft.flashlight": "Flashlight",
+  "item.backroomscraft.almond_water": "Almond Water",
+  "entity.backroomscraft.bacteria": "Bacteria"
+}

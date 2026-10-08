@@ -1,0 +1,150 @@
+{
+  "_sheet": "Render and bake settings. One number per row.",
+  "_kind": "constants",
+  "_columns": {
+    "id": "key; becomes Sheets.Render.<ID>",
+    "value": "any; the number (or a list for colours)",
+    "unit": "str; what it is measured in",
+    "what": "str; what it controls"
+  },
+  "rows": [
+    {
+      "id": "bake_version",
+      "value": 2.0,
+      "unit": "count",
+      "what": "Raise to make every player's cache rebuild after a change to the bake.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "voxels_per_block",
+      "value": 8.0,
+      "unit": "voxels",
+      "what": "Collision resolution: 8 = 12.5 cm.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "subdivide_cm",
+      "value": 100.0,
+      "unit": "cm",
+      "what": "Triangles longer than this are split so baked vertex light is smooth.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "texture_max",
+      "value": 1024.0,
+      "unit": "pixels",
+      "what": "Largest mip loaded of the level's own tiling textures (walls, carpet, ceiling).",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "texture_max_props",
+      "value": 512.0,
+      "unit": "pixels",
+      "what": "Largest mip loaded of every other texture (furniture and props).",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "light_scale",
+      "value": 8.5,
+      "unit": "factor",
+      "what": "Unreal light intensity to baked brightness.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "light_radius_cm",
+      "value": 1000.0,
+      "unit": "cm",
+      "what": "Reach of a light that does not set its own attenuation radius (Unreal's default).",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "light_ambient",
+      "value": [
+        0.045,
+        0.04,
+        0.03
+      ],
+      "unit": "rgb",
+      "what": "Light everywhere, standing in for bounced light.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "light_bounce",
+      "value": 0.45,
+      "unit": "factor",
+      "what": "Strength of the soft light added under every lamp to stand in for light bounced off the floor and walls.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "lamp_colour",
+      "value": [
+        1.0,
+        0.93,
+        0.74
+      ],
+      "unit": "rgb",
+      "what": "Colour of the ceiling lamps' light (their material's BaseColorMultiplier, brightened).",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "exposure",
+      "value": 0.8,
+      "unit": "factor",
+      "what": "Brightness of the whole level in the shader.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "fog_colour",
+      "value": [
+        0.055,
+        0.05,
+        0.03
+      ],
+      "unit": "rgb",
+      "what": "What far geometry fades to.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "fog_start",
+      "value": 18.0,
+      "unit": "blocks",
+      "what": "Where the fade starts.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "fog_end",
+      "value": 70.0,
+      "unit": "blocks",
+      "what": "Where geometry is fully faded.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "flashlight_range",
+      "value": 24.0,
+      "unit": "blocks",
+      "what": "Reach of the flashlight beam.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "flashlight_cone_deg",
+      "value": 24.0,
+      "unit": "degrees",
+      "what": "Half angle of the beam.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "flashlight_power",
+      "value": 0.9,
+      "unit": "factor",
+      "what": "Brightness of the beam at arm's length.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    },
+    {
+      "id": "emissive_boost",
+      "value": 1.9,
+      "unit": "factor",
+      "what": "How much brighter than its texture a glowing surface (the ceiling lamps) is drawn.",
+      "verified": "in-game autotest 2026-10-08 (PASS) and screenshots"
+    }
+  ]
+}

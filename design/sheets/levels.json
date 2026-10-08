@@ -1,0 +1,38 @@
+{
+  "_sheet": "Levels. One row per Escape the Backrooms map the mod loads.",
+  "_record": "Level",
+  "_columns": {
+    "id": "key; also the dimension id backroomscraft:<id>",
+    "name": "str; shown to the player",
+    "map": "etb; the persistent level",
+    "sublevels": "etbs; streamed levels drawn with it",
+    "start_tag": "str; Tag of the PlayerStart actors a run begins at",
+    "exit_class": "str; class of the actor that ends the run when reached",
+    "exit_tag": "str; Tag of the PlayerStarts next to the exit, used by the autotest",
+    "floor_y": "int; Minecraft y of Unreal z=0",
+    "kill_z_cm": "float; Unreal z below which the player has fallen out of the map",
+    "ambience": "ref:sounds; looping background sound",
+    "entity": "ref:entities; what hunts the player here",
+    "entity_class": "str; class of the map actor that marks where it starts"
+  },
+  "rows": [
+    {
+      "id": "level0",
+      "name": "Level 0",
+      "map": "/Game/Maps/Level0",
+      "sublevels": [
+        "/Game/Maps/Level0/Pitfalls",
+        "/Game/Maps/Level0/ManillaRoom"
+      ],
+      "start_tag": "Start",
+      "exit_class": "BP_Level0Exit_C",
+      "exit_tag": "Exit",
+      "floor_y": 64,
+      "kill_z_cm": -2000.0,
+      "ambience": "level0_loop",
+      "entity": "bacteria",
+      "entity_class": "Bacteria_BP_C",
+      "verified": "in-game autotest 2026-10-08 (PASS): put at a real start on the real floor, walked 12.95 blocks, reached the exit actor and the run restarted; the dump's flood fill reaches the exit on foot from all four starts"
+    }
+  ]
+}
