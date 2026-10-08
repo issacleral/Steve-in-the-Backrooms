@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="media/07_bacteria_attack.png" alt="Steve in the Backrooms: la Bacteria de Escape the Backrooms alcanza al jugador de Minecraft en un pasillo del Level 0 real" width="100%">
-</p>
+
 
 <h1 align="center">Steve in the Backrooms</h1>
 
