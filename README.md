@@ -15,7 +15,6 @@
   <a href="#qué-necesitas"><img alt="Minecraft 1.21.11" src="https://img.shields.io/badge/Minecraft-1.21.11_Fabric-62B47A"></a>
   <a href="CHANGELOG.md"><img alt="versión 0.1.0" src="https://img.shields.io/badge/versión-0.1.0-D9A441"></a>
   <a href="LICENSE"><img alt="licencia MIT" src="https://img.shields.io/badge/licencia-MIT-blue"></a>
-  <a href="https://github.com/rehan-remade/universal-modder"><img alt="made with universal-modder" src="https://raw.githubusercontent.com/rehan-remade/universal-modder/main/docs/media/made-with-dark.svg" height="20"></a>
 </p>
 
 <p align="center">
