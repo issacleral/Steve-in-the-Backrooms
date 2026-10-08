@@ -123,7 +123,9 @@ Coordinates: Minecraft (x, y, z) = Unreal (x, z, y) / 100, plus 64 on y. 1 block
   frames only). The clip is on the Melty listing.
 - Release 0.1.0 was resubmitted after the demo code so the jar on Melty matches the source, and `publish` was called
   again: status awaiting-play until the owner presses Play on its page in the Melty app.
-- No GitHub release with the jar yet: the README tells people to use Melty or build it.
+- GitHub release v0.1.0 (tag on 610f61f) carries `backroomscraft-0.1.0.jar`, attached through the browser. The
+  22.8 MB Prism bundle is not attached: the browser upload tool takes at most 10 MB per call, and without the `gh`
+  CLI there is no other way in that does not handle the owner's token.
 
 ## Rules
 - Never commit or ship Escape the Backrooms files; extracted data stays in the temp folder or the instance's cache.
